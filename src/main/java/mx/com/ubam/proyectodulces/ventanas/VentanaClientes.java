@@ -8,21 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import mx.com.ubam.proyectodulces.catalogo.CatalogoDulces;
-import mx.com.ubam.proyectodulces.clases.Dulce;
+import mx.com.ubam.proyectodulces.clases.Cliente;
 import mx.com.ubam.proyectodulces.clases.Producto;
 
 /**
  *
- * @author irvin
+ * @author force
  */
-public class VentanaProductos extends javax.swing.JFrame {
-    Producto produc;
-    ArrayList<Producto> listaProducto = new ArrayList<Producto>();
+public class VentanaClientes extends javax.swing.JFrame {
+    Cliente cliente;
+    ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
     /**
-     * Creates new form VentanaProductos
+     * Creates new form VentanaClientes
      */
-    public VentanaProductos() {
+    public VentanaClientes() {
         initComponents();
     }
 
@@ -35,49 +34,19 @@ public class VentanaProductos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        FieldProducto = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        FieldTipo = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        FieldPresentacion = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        FieldSabor = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        FieldPrecio = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TableProductos = new javax.swing.JTable();
+        TableCliente = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        FieldId = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        FieldNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Ventana Productos");
-
-        jLabel2.setText("Ingresa Producto:");
-
-        jLabel3.setText("Ingresa Tipo de Producto:");
-
-        jLabel4.setText("Ingresa Presentacion:");
-
-        jLabel5.setText("Ingresa Sabor:");
-
-        FieldSabor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldSaborActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setText("Ingresa Precio:");
-
-        FieldPrecio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FieldPrecioActionPerformed(evt);
-            }
-        });
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -107,23 +76,32 @@ public class VentanaProductos extends javax.swing.JFrame {
             }
         });
 
-        TableProductos.setModel(new javax.swing.table.DefaultTableModel(
+        TableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Producto", "Marca", "Presentacion", "Sabor", "Precio"
+                "ID", "Nombre"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(TableProductos);
+        jScrollPane1.setViewportView(TableCliente);
+
+        jLabel1.setText("Ventana Productos");
+
+        jLabel2.setText("Ingresa id:");
+
+        jLabel3.setText("Ingresa Nombre:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,25 +115,13 @@ public class VentanaProductos extends javax.swing.JFrame {
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FieldPrecio))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FieldSabor))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
-                                .addComponent(FieldProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(FieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FieldTipo))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(FieldPresentacion))))
+                                .addComponent(FieldNombre))))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
@@ -166,7 +132,7 @@ public class VentanaProductos extends javax.swing.JFrame {
                         .addComponent(jButton4)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,81 +145,58 @@ public class VentanaProductos extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(FieldProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(FieldTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(FieldPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(FieldSabor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(FieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
                             .addComponent(jButton3)
-                            .addComponent(jButton4))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton4))
+                        .addGap(90, 90, 90)))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void FieldSaborActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldSaborActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FieldSaborActionPerformed
-
-    private void FieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldPrecioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_FieldPrecioActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String producto = FieldProducto.getText();
-        String tipo = FieldTipo.getText();
-        String presentacion = FieldPresentacion.getText();
-        String sabor = FieldSabor.getText();
-        double precio = Double.parseDouble(FieldPrecio.getText());
+        String nombre = FieldNombre.getText();
+        int id = Integer.parseInt(FieldId.getText());
         //Agregar Producto
-        Dulce dulce = new Dulce(tipo, presentacion, precio, sabor);
-            CatalogoDulces.agregarDulces(dulce);
-            
+        cliente = new Cliente(id, nombre);
+            listaCliente.add(cliente);
+        
+        FieldId.setText("");
+        FieldNombre.setText("");
+        FieldId.requestFocus();
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         /*for(int i = 0 ; i < listaProducto.size() ; i++){
-        String test = ("Producto: " + listaProducto.get(i).getTipo() + " Tipo: " + listaProducto.get(i).getMarca() 
-                + " Presentacion: " + listaProducto.get(i).getPresentacion() + " Precio: " + listaProducto.get(i).getPrecioBase()); 
-      
-        JOptionPane.showMessageDialog(null, test , "titulo" , JOptionPane.DEFAULT_OPTION);
+            String test = ("Producto: " + listaProducto.get(i).getTipo() + " Tipo: " + listaProducto.get(i).getMarca()
+                + " Presentacion: " + listaProducto.get(i).getPresentacion() + " Precio: " + listaProducto.get(i).getPrecioBase());
+
+            JOptionPane.showMessageDialog(null, test , "titulo" , JOptionPane.DEFAULT_OPTION);
         }
         */
         DefaultTableModel tm = new DefaultTableModel();
-        tm.addColumn("Producto");
-        tm.addColumn("Marca");
-        tm.addColumn("Presentacion");
-        tm.addColumn("Sabor");
-        tm.addColumn("Precio");
+        tm.addColumn("Id");
+        tm.addColumn("Nombre");
         
         List<Object[]> rows = new ArrayList<>();
-            for(int i = 0 ; i < CatalogoDulces.getCatalogoDulces().size() ; i++){
-                rows.add(new Object[]{ CatalogoDulces.getCatalogoDulces().get(i).getTipo(), CatalogoDulces.getCatalogoDulces().get(i).getMarca()
-                , CatalogoDulces.listaDulces.get(i).getPresentacion() , CatalogoDulces.listaDulces.get(i).getSabor() , CatalogoDulces.listaDulces.get(i).getPrecioBase()});
+            for(int i = 0 ; i < listaCliente.size() ; i++){
+                rows.add(new Object[]{listaCliente.get(i).getIdCliente() , listaCliente.get(i).getNombreCliente()});
             }
                 for(Object[] row : rows){
                 tm.addRow(row);
                 }
-                TableProductos.setModel(tm);
-                
-        
+                TableCliente.setModel(tm);
+
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -261,25 +204,20 @@ public class VentanaProductos extends javax.swing.JFrame {
         int respuesta = JOptionPane.showConfirmDialog(null, "Deseas eliminar los productos" , "Aviso" , JOptionPane.YES_NO_OPTION);
             if(respuesta == JOptionPane.YES_OPTION){
             JOptionPane.showMessageDialog(null, "Se han eliminado todos los productos");
-            listaProducto.clear();
-            DefaultTableModel tm = new DefaultTableModel();
-            tm.addColumn("Producto");
-            tm.addColumn("Marca");
-            tm.addColumn("Presentacion");
-            tm.addColumn("Sabor");
-            tm.addColumn("Precio");
+        listaCliente.clear();
+        DefaultTableModel tm = new DefaultTableModel();
+        tm.addColumn("Id");
+        tm.addColumn("Nombre");
         
         List<Object[]> rows = new ArrayList<>();
-            for(int i = 0 ; i < listaProducto.size() ; i++){
-                rows.add(new Object[]{listaProducto.get(i).getTipo(),listaProducto.get(i).getMarca()
-                , listaProducto.get(i).getPresentacion() , listaProducto.get(i).getPrecioBase()});
+            for(int i = 0 ; i < listaCliente.size() ; i++){
+                rows.add(new Object[]{listaCliente.get(i).getIdCliente() , listaCliente.get(i).getNombreCliente()});
             }
                 for(Object[] row : rows){
                 tm.addRow(row);
                 }
-                TableProductos.setModel(tm);
-        }
-        
+                TableCliente.setModel(tm);
+            }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -303,31 +241,28 @@ public class VentanaProductos extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaProductos().setVisible(true);
+                new VentanaClientes().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField FieldPrecio;
-    private javax.swing.JTextField FieldPresentacion;
-    private javax.swing.JTextField FieldProducto;
-    private javax.swing.JTextField FieldSabor;
-    private javax.swing.JTextField FieldTipo;
-    private javax.swing.JTable TableProductos;
+    private javax.swing.JTextField FieldId;
+    private javax.swing.JTextField FieldNombre;
+    private javax.swing.JTable TableCliente;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -335,9 +270,6 @@ public class VentanaProductos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
