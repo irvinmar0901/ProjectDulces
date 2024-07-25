@@ -27,9 +27,10 @@ public class VentaTest {
 
 	private static void test_emisionVenta(Vendible motorVenta) {
 		System.out.println("Probando " + motorVenta.getIdVenta());
-		motorVenta.agregarProducto(Producto.crearProducto("Dulce", "ricolino", "bolsita",15.20 , "fresa"), 7);
+		motorVenta.agregarProducto(Producto.crearProducto("Dulce", "ricolino", "bolsita",15.20 , "fresa"), 2);
                 motorVenta.agregarProducto(Producto.crearProducto("Dulce", "Vero", "Paleta",5.10 , "mango"), 2);
                 motorVenta.agregarProducto(Producto.crearProducto("Dulce", "Marinela", "Paquete Galletas",16.35 , "Chocolate"), 3);
+                motorVenta.agregarProducto(Producto.crearProducto("Dulce", "Marinela", "Paquete Galletas",16.35 , "Vainilla"), 3);
 		Venta miVenta = motorVenta.emitirVenta();
 		miVenta.mostrarVenta();
 		
