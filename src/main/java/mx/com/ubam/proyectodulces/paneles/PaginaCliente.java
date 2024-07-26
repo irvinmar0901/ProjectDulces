@@ -1,28 +1,28 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package mx.com.ubam.proyectodulces.ventanas;
+package mx.com.ubam.proyectodulces.paneles;
 
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import mx.com.ubam.proyectodulces.catalogo.CatalogoCliente;
 import mx.com.ubam.proyectodulces.clases.Cliente;
-import mx.com.ubam.proyectodulces.clases.Producto;
 
 /**
  *
- * @author force
+ * @author irvin
  */
-public class VentanaClientes extends javax.swing.JFrame {
-    Cliente cliente;
-    ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
+public class PaginaCliente extends javax.swing.JPanel {
+    CatalogoCliente cc = new CatalogoCliente();
     /**
-     * Creates new form VentanaClientes
+     * Creates new form PaginaCliente
      */
-    public VentanaClientes() {
+    public PaginaCliente() {
         initComponents();
+        llenartabla();
     }
 
     /**
@@ -34,7 +34,6 @@ public class VentanaClientes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -45,15 +44,7 @@ public class VentanaClientes extends javax.swing.JFrame {
         FieldId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         FieldNombre = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1 = new javax.swing.JButton();
 
         jButton2.setText("Borrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +60,7 @@ public class VentanaClientes extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Mostrar");
+        jButton4.setText("Actualizar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -103,8 +94,15 @@ public class VentanaClientes extends javax.swing.JFrame {
 
         jLabel3.setText("Ingresa Nombre:");
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -132,7 +130,7 @@ public class VentanaClientes extends javax.swing.JFrame {
                         .addComponent(jButton4)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -157,106 +155,56 @@ public class VentanaClientes extends javax.swing.JFrame {
                             .addComponent(jButton3)
                             .addComponent(jButton4))
                         .addGap(90, 90, 90)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(79, Short.MAX_VALUE))
         );
-
-        pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        int respuesta = JOptionPane.showConfirmDialog(null, "Deseas eliminar los productos" , "Aviso" , JOptionPane.YES_NO_OPTION);
+        if(respuesta == JOptionPane.YES_OPTION){
+            JOptionPane.showMessageDialog(null, "Se han eliminado todos los productos");
+            CatalogoCliente.listaCliente.clear();
+            llenartabla();
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        llenartabla();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre = FieldNombre.getText();
         int id = Integer.parseInt(FieldId.getText());
+
         //Agregar Producto
-        cliente = new Cliente(id, nombre);
-            listaCliente.add(cliente);
-        
+        Cliente cliente = new Cliente(id, nombre);
+        CatalogoCliente.agregarCliente(cliente);
+        limpiar();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    public void limpiar(){
         FieldId.setText("");
         FieldNombre.setText("");
         FieldId.requestFocus();
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        /*for(int i = 0 ; i < listaProducto.size() ; i++){
-            String test = ("Producto: " + listaProducto.get(i).getTipo() + " Tipo: " + listaProducto.get(i).getMarca()
-                + " Presentacion: " + listaProducto.get(i).getPresentacion() + " Precio: " + listaProducto.get(i).getPrecioBase());
-
-            JOptionPane.showMessageDialog(null, test , "titulo" , JOptionPane.DEFAULT_OPTION);
-        }
-        */
+    }
+    public void llenartabla(){
         DefaultTableModel tm = new DefaultTableModel();
         tm.addColumn("Id");
         tm.addColumn("Nombre");
         
         List<Object[]> rows = new ArrayList<>();
-            for(int i = 0 ; i < listaCliente.size() ; i++){
-                rows.add(new Object[]{listaCliente.get(i).getIdCliente() , listaCliente.get(i).getNombreCliente()});
+            for(int i = 0 ; i < CatalogoCliente.getCatalogoClientes().size() ; i++){
+                rows.add(new Object[]{CatalogoCliente.getCatalogoClientes().get(i).getIdCliente() 
+                        , CatalogoCliente.getCatalogoClientes().get(i).getNombreCliente()});
             }
                 for(Object[] row : rows){
                 tm.addRow(row);
                 }
                 TableCliente.setModel(tm);
-
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        
-        int respuesta = JOptionPane.showConfirmDialog(null, "Deseas eliminar los productos" , "Aviso" , JOptionPane.YES_NO_OPTION);
-            if(respuesta == JOptionPane.YES_OPTION){
-            JOptionPane.showMessageDialog(null, "Se han eliminado todos los productos");
-        listaCliente.clear();
-        DefaultTableModel tm = new DefaultTableModel();
-        tm.addColumn("Id");
-        tm.addColumn("Nombre");
-        
-        List<Object[]> rows = new ArrayList<>();
-            for(int i = 0 ; i < listaCliente.size() ; i++){
-                rows.add(new Object[]{listaCliente.get(i).getIdCliente() , listaCliente.get(i).getNombreCliente()});
-            }
-                for(Object[] row : rows){
-                tm.addRow(row);
-                }
-                TableCliente.setModel(tm);
-            }
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaClientes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaClientes().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
