@@ -8,6 +8,15 @@ package mx.com.ubam.proyectodulces.clases;
 public class Vendedor {
     private int idVendedor;
     private String nombreVendedor;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     public int getIdVendedor() {
         return idVendedor;
@@ -25,14 +34,15 @@ public class Vendedor {
         this.nombreVendedor = vendedor;
     }
 
-    public Vendedor(int idVendedor, String vendedor) {
+    public Vendedor(int idVendedor, String vendedor , String password) {
         this.idVendedor = idVendedor;
         this.nombreVendedor = vendedor;
+        this.password = password;
     }
 
     @Override
     public String toString() {
-        return "Vendedor{" + "idVendedor=" + idVendedor + ", vendedor=" + nombreVendedor + '}';
+        return "Vendedor{" + "idVendedor=" + idVendedor + ", vendedor=" + nombreVendedor + ", password= " + password + '}';
     }
     
 }

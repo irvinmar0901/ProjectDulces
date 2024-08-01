@@ -6,7 +6,9 @@ package mx.com.ubam.proyectodulces.ventanas;
 
 import java.awt.BorderLayout;
 import mx.com.ubam.proyectodulces.paneles.PaginaCliente;
+import mx.com.ubam.proyectodulces.paneles.PaginaCrearTicket;
 import mx.com.ubam.proyectodulces.paneles.PaginaProducto;
+import mx.com.ubam.proyectodulces.paneles.PaginaSesion;
 import mx.com.ubam.proyectodulces.paneles.PaginaVendedor;
 
 /**
@@ -20,6 +22,7 @@ public class CreadorTicket extends javax.swing.JFrame {
      */
     public CreadorTicket() {
         initComponents();
+        
     }
 
     /**
@@ -33,11 +36,13 @@ public class CreadorTicket extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
+        LabelUser = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         AltaVendedor = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         content = new javax.swing.JPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
@@ -50,15 +55,25 @@ public class CreadorTicket extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 153));
 
+        LabelUser.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        LabelUser.setForeground(new java.awt.Color(255, 255, 255));
+        LabelUser.setText("Bienvenido:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(644, Short.MAX_VALUE)
+                .addComponent(LabelUser)
+                .addGap(165, 165, 165))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LabelUser, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 40));
@@ -103,6 +118,22 @@ public class CreadorTicket extends javax.swing.JFrame {
         jLabel4.setText("Crear Ticket");
         jLabel4.setOpaque(true);
         jLabel4.setPreferredSize(new java.awt.Dimension(200, 50));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
+
+        jLabel6.setBackground(new java.awt.Color(51, 102, 153));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Iniciar Sesion");
+        jLabel6.setOpaque(true);
+        jLabel6.setPreferredSize(new java.awt.Dimension(200, 50));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -113,7 +144,8 @@ public class CreadorTicket extends javax.swing.JFrame {
                     .addComponent(AltaVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -127,7 +159,8 @@ public class CreadorTicket extends javax.swing.JFrame {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(151, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 160, 460));
@@ -187,7 +220,7 @@ public class CreadorTicket extends javax.swing.JFrame {
 
     private void AltaVendedorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AltaVendedorMouseClicked
         PaginaVendedor pv = new PaginaVendedor();
-        pv.setSize(830, 240);
+        pv.setSize(830, 300);
         pv.setLocation(1, 1);
 
         contenido.removeAll();
@@ -197,8 +230,8 @@ public class CreadorTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_AltaVendedorMouseClicked
 
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
-        PaginaProducto pv = new PaginaProducto();
-        pv.setSize(830, 240);
+        PaginaCliente pv = new PaginaCliente();
+        pv.setSize(850, 300);
         pv.setLocation(1, 1);
 
         contenido.removeAll();
@@ -208,15 +241,37 @@ public class CreadorTicket extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        PaginaCliente pv = new PaginaCliente();
-        pv.setSize(830, 240);
-        pv.setLocation(1, 1);
+        PaginaProducto pv = new PaginaProducto();
+        pv.setSize(730, 300);
+        pv.setLocation(0, 0);
 
         contenido.removeAll();
         contenido.add(pv , BorderLayout.CENTER);
         contenido.revalidate();
         contenido.repaint();
     }//GEN-LAST:event_jLabel3MouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        PaginaCrearTicket pct = new PaginaCrearTicket();
+        pct.setSize(830 ,300);
+        pct.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(pct , BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        PaginaSesion ps = new PaginaSesion();
+        ps.setSize(830 , 300);
+        ps.setLocation(0, 0);
+        
+        contenido.removeAll();
+        contenido.add(ps , BorderLayout.CENTER);
+        contenido.revalidate();
+        contenido.repaint();
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -255,12 +310,14 @@ public class CreadorTicket extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AltaVendedor;
+    public javax.swing.JLabel LabelUser;
     private javax.swing.JPanel contenido;
     private javax.swing.JPanel content;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

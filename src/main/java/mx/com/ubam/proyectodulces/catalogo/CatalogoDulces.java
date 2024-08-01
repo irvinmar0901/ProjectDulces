@@ -14,10 +14,15 @@ import mx.com.ubam.proyectodulces.clases.Dulce;
 public class CatalogoDulces {
     public static ArrayList<Dulce> listaDulces = new ArrayList<Dulce>();
     
+    private boolean agregarDefault(){
+        return listaDulces.isEmpty();
+    }
     public CatalogoDulces(){
-        listaDulces.add(new Dulce("Sabritas" , "Chetos torciditos" , 27.5 , "Queso"));
+        if(true == agregarDefault()){
+        listaDulces.add(new Dulce("Sabritas" , "Chetos torciditos" , 15 , "Queso"));
         listaDulces.add(new Dulce("Ricolino" , "Paleta Payaso" , 15 , "Chocolate"));
         listaDulces.add(new Dulce("Vero" , "Paleta de Caramelo" , 6 , "Picante"));
+        }
     }
     
     public static void agregarDulces(Dulce nuevoDulce){

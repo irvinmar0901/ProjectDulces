@@ -14,10 +14,15 @@ import mx.com.ubam.proyectodulces.clases.Vendedor;
 public class CatalogoVendedor {
     public static ArrayList<Vendedor> listaVendedor = new ArrayList<Vendedor>();
     
+    private boolean agregarDefault(){
+        return listaVendedor.isEmpty();
+    }
     public CatalogoVendedor(){
-        listaVendedor.add(new Vendedor(1001 , "Irvin"));
-        listaVendedor.add(new Vendedor(1002 , "Yaret"));
-        listaVendedor.add(new Vendedor(1003 , "Luis"));
+        if(true == agregarDefault()){
+        listaVendedor.add(new Vendedor(1001 , "Irvin" , "Marqu3z1"));
+        listaVendedor.add(new Vendedor(1002 , "Yaret" , "Rivera12"));
+        listaVendedor.add(new Vendedor(1003 , "Luis" , "nose123"));
+        }
     }
     
     public static void agregarVendedor(Vendedor nuevoVendedor){

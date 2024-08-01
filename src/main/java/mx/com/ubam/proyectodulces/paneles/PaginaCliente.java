@@ -16,13 +16,14 @@ import mx.com.ubam.proyectodulces.clases.Cliente;
  * @author irvin
  */
 public class PaginaCliente extends javax.swing.JPanel {
+    
     CatalogoCliente cc = new CatalogoCliente();
     /**
      * Creates new form PaginaCliente
      */
     public PaginaCliente() {
         initComponents();
-        llenartabla();
+        llenartabla();           
     }
 
     /**
@@ -46,12 +47,15 @@ public class PaginaCliente extends javax.swing.JPanel {
         FieldNombre = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
 
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jButton2.setText("Borrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 102, -1, -1));
 
         jButton3.setText("Cerrar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -59,6 +63,7 @@ public class PaginaCliente extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(186, 102, -1, -1));
 
         jButton4.setText("Actualizar");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -66,6 +71,7 @@ public class PaginaCliente extends javax.swing.JPanel {
                 jButton4ActionPerformed(evt);
             }
         });
+        add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 102, -1, -1));
 
         TableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,11 +94,18 @@ public class PaginaCliente extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(TableCliente);
 
-        jLabel1.setText("Ventana Productos");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(384, 16, 347, 202));
+
+        jLabel1.setText("Ventana Cliente");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, -1, -1));
 
         jLabel2.setText("Ingresa id:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 31, -1, -1));
+        add(FieldId, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 28, 230, -1));
 
         jLabel3.setText("Ingresa Nombre:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 65, -1, -1));
+        add(FieldNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(106, 62, 208, -1));
 
         jButton1.setText("Agregar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -100,63 +113,7 @@ public class PaginaCliente extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(18, 18, 18)
-                                .addComponent(FieldId, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FieldNombre))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4)))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(FieldId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)
-                            .addComponent(jButton4))
-                        .addGap(90, 90, 90)))
-                .addContainerGap(79, Short.MAX_VALUE))
-        );
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 102, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -186,12 +143,21 @@ public class PaginaCliente extends javax.swing.JPanel {
         CatalogoCliente.agregarCliente(cliente);
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void limpiarTabla(){
+        DefaultTableModel temp = (DefaultTableModel) TableCliente.getModel();
+        int fila = TableCliente.getRowCount();
+        for(int x = 0 ; fila > x ; x++)
+            temp.removeRow(0);
+        
+    }
     public void limpiar(){
         FieldId.setText("");
         FieldNombre.setText("");
         FieldId.requestFocus();
     }
     public void llenartabla(){
+        
         DefaultTableModel tm = new DefaultTableModel();
         tm.addColumn("Id");
         tm.addColumn("Nombre");

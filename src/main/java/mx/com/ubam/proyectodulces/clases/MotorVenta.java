@@ -46,7 +46,7 @@ public class MotorVenta implements Vendible{
    @Override
 	public Venta emitirVenta(){
 		double total = 0;
-		Venta venta = new Venta(LocalDate.now(), new Vendedor(1,"Royer"), new Cliente(2,"Juan"));
+		Venta venta = new Venta(LocalDate.now(), new Vendedor(1,"Royer" , "12345"), new Cliente(2,"Juan"));
 		//venta.setFechaVenta(LocalDate.now());
 //		System.out.printf(" Cant. %15s %20s %10s\n", "Articulo", "Precio", "Total");
 		for(int i=0; i<this.lstProductos.size(); i++) {

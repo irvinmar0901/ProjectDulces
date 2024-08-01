@@ -14,10 +14,16 @@ import mx.com.ubam.proyectodulces.clases.Cliente;
 public class CatalogoCliente {
     public static ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
     
+    private boolean agregarDefault(){
+        return listaCliente.isEmpty();
+    }
+    
     public CatalogoCliente(){
-        listaCliente.add(new Cliente(1001 , "Yaret"));
-        listaCliente.add(new Cliente(1002 , "Juan"));
-        listaCliente.add(new Cliente(1003 , "Sebas"));
+        if(true == agregarDefault()){
+        listaCliente.add(new Cliente(1001 , "Jesus Jimenez" ));
+        listaCliente.add(new Cliente(1002 , "Venado Martinez"));
+        listaCliente.add(new Cliente(1002 , "Edwin Ramirez"));
+        }
     }
     
     public static void agregarCliente(Cliente nuevoCliente){

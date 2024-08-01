@@ -44,6 +44,8 @@ public class PaginaVendedor extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TableVendedor = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        FieldPassword = new javax.swing.JTextField();
 
         jLabel1.setText("Ventana Vendedor");
 
@@ -74,17 +76,17 @@ public class PaginaVendedor extends javax.swing.JPanel {
 
         TableVendedor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "ID", "Nombre"
+                "ID", "Nombre", "Password"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -92,6 +94,8 @@ public class PaginaVendedor extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(TableVendedor);
+
+        jLabel4.setText("Ingresa Contraseña:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -102,8 +106,18 @@ public class PaginaVendedor extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(19, 19, 19)
+                        .addComponent(jButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(FieldPassword))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
@@ -111,13 +125,7 @@ public class PaginaVendedor extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(FieldNombre))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(FieldNombre)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 351, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
@@ -137,12 +145,16 @@ public class PaginaVendedor extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
                             .addComponent(FieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(FieldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton1)
                             .addComponent(jButton2)
                             .addComponent(jButton4))
-                        .addGap(0, 113, Short.MAX_VALUE))
+                        .addGap(0, 81, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -151,9 +163,10 @@ public class PaginaVendedor extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre = FieldNombre.getText();
         int id = Integer.parseInt(FieldId.getText());
+        String password = FieldPassword.getText();
 
         //Agregar Producto
-        Vendedor vendedor = new Vendedor(id, nombre);
+        Vendedor vendedor = new Vendedor(id, nombre , password);
         CatalogoVendedor.agregarVendedor(vendedor);
         limpiar();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -181,11 +194,13 @@ public class PaginaVendedor extends javax.swing.JPanel {
         DefaultTableModel tm = new DefaultTableModel();
         tm.addColumn("Id");
         tm.addColumn("Nombre");
+        tm.addColumn("Contraseña");
         
         List<Object[]> rows = new ArrayList<>();
             for(int i = 0 ; i < CatalogoVendedor.getCatalogoVendedor().size() ; i++){
                 rows.add(new Object[]{CatalogoVendedor.getCatalogoVendedor().get(i).getIdVendedor()
-                        , CatalogoVendedor.getCatalogoVendedor().get(i).getNombreVendedor()});
+                        , CatalogoVendedor.getCatalogoVendedor().get(i).getNombreVendedor() , 
+                        CatalogoVendedor.getCatalogoVendedor().get(i).getPassword()});
             }
                 for(Object[] row : rows){
                 tm.addRow(row);
@@ -196,6 +211,7 @@ public class PaginaVendedor extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField FieldId;
     private javax.swing.JTextField FieldNombre;
+    private javax.swing.JTextField FieldPassword;
     private javax.swing.JTable TableVendedor;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -203,6 +219,7 @@ public class PaginaVendedor extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
