@@ -1,0 +1,9 @@
+Venta: 1
+Fecha: 2024-08-07
+Atendido por: Irvin
+Cliente: Jesus Jimenez
+Productos:
+Sabritas , Chetos torciditos , Queso , 2 , 30.0
+Ricolino , Paleta Payaso , Chocolate , 3 , 45.0
+Vero , Paleta de Caramelo , Picante , 2 , 12.0
+Total: 87.0

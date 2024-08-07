@@ -8,7 +8,7 @@ public class DetalleVenta {
     private int numDetalleVenta;
     private int cantidad;
     private double importe;
-    private String dulce;
+    private Dulce dulce;
     private String vendedor;
     private String cliente;
 
@@ -36,13 +36,15 @@ public class DetalleVenta {
         this.importe = importe;
     }
 
-    public String getDulce() {
+    public Dulce getDulce() {
         return dulce;
     }
 
-    public void setDulce(String dulce) {
+    public void setDulce(Dulce dulce) {
         this.dulce = dulce;
     }
+
+    
 
     public String getVendedor() {
         return vendedor;
@@ -60,7 +62,7 @@ public class DetalleVenta {
         this.cliente = cliente;
     }
 
-    public DetalleVenta(int numDetalleVenta, int cantidad, double importe, String dulce, String vendedor, String cliente) {
+    public DetalleVenta(int numDetalleVenta, int cantidad, double importe, Dulce dulce, String vendedor, String cliente) {
         this.numDetalleVenta = numDetalleVenta;
         this.cantidad = cantidad;
         this.importe = importe;
