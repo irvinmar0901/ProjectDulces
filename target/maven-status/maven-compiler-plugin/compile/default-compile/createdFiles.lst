@@ -1,6 +1,7 @@
 mx\com\ubam\proyectodulces\paneles\PaginaCliente$5.class
 mx\com\ubam\proyectodulces\servicios\Vendible.class
 mx\com\ubam\proyectodulces\clases\Vendedor.class
+mx\com\ubam\proyectodulces\paneles\PaginaCrearTicket$3.class
 mx\com\ubam\proyectodulces\paneles\PaginaProducto.class
 mx\com\ubam\proyectodulces\paneles\PaginaVendedor$1.class
 mx\com\ubam\proyectodulces\ventanas\CreadorTicket$5.class
@@ -15,7 +16,6 @@ mx\com\ubam\proyectodulces\catalogo\CatalogoVendedor.class
 mx\com\ubam\proyectodulces\paneles\PaginaCliente$3.class
 mx\com\ubam\proyectodulces\clases\Producto.class
 mx\com\ubam\proyectodulces\ventanas\CreadorTicket$4.class
-mx\com\ubam\proyectodulces\clases\MotorVenta.class
 mx\com\ubam\proyectodulces\clases\Venta.class
 mx\com\ubam\proyectodulces\paneles\PaginaProducto$6.class
 mx\com\ubam\proyectodulces\ventanas\CreadorTicket.class
@@ -23,6 +23,7 @@ mx\com\ubam\proyectodulces\paneles\PaginaProducto$1.class
 mx\com\ubam\proyectodulces\paneles\PaginaVendedor$2.class
 mx\com\ubam\proyectodulces\catalogo\CatalogoCliente.class
 mx\com\ubam\proyectodulces\paneles\PaginaProducto$2.class
+mx\com\ubam\proyectodulces\catalogo\DetalleVentas.class
 mx\com\ubam\proyectodulces\paneles\PaginaProducto$7.class
 mx\com\ubam\proyectodulces\clases\Dulce.class
 mx\com\ubam\proyectodulces\paneles\PaginaProducto$4.class
@@ -38,6 +39,6 @@ mx\com\ubam\proyectodulces\ventanas\CreadorTicket$3.class
 mx\com\ubam\proyectodulces\catalogo\SesionVendedor.class
 mx\com\ubam\proyectodulces\paneles\PaginaCliente.class
 mx\com\ubam\proyectodulces\paneles\PaginaSesion$1.class
-mx\com\ubam\proyectodulces\pruebas\VentaTest.class
+mx\com\ubam\proyectodulces\paneles\PaginaCrearTicket$2.class
 mx\com\ubam\proyectodulces\paneles\PaginaCrearTicket.class
 mx\com\ubam\proyectodulces\paneles\PaginaSesion.class

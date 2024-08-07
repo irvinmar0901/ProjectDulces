@@ -1,6 +1,6 @@
 
 package mx.com.ubam.proyectodulces.clases;
-import java.time.LocalDate;
+
 import java.util.ArrayList;
 import mx.com.ubam.proyectodulces.servicios.Vendible;
 
@@ -8,6 +8,8 @@ import mx.com.ubam.proyectodulces.servicios.Vendible;
  *
  * @author tibur
  */
+
+/*
 public class MotorVenta implements Vendible{
    private ArrayList<Producto> lstProductos;
    private ArrayList<Integer> lstCantidades;
@@ -24,7 +26,7 @@ public class MotorVenta implements Vendible{
 		this.lstCantidades.add(cantidad);
 	}
 	
-	/*public void desplegarVenta() {
+	public void desplegarVenta() {
 		double total = 0;
 		System.out.printf(" Cant. %15s %20s %10s\n", "Articulo", "Precio", "Total");
 		for(int i=0; i<this.lstProductos.size(); i++) {
@@ -41,10 +43,10 @@ public class MotorVenta implements Vendible{
 		}
 		String cadTotal = String.format("%12.2f",total);
 		System.out.println(String.format("%56s", cadTotal));
-	}*/
+	}
 	
-   @Override
-	public Venta emitirVenta(){
+   
+	/*public Venta emitirVenta(){
 		double total = 0;
 		Venta venta = new Venta(LocalDate.now(), new Vendedor(1,"Royer" , "12345"), new Cliente(2,"Juan"));
 		//venta.setFechaVenta(LocalDate.now());
@@ -73,3 +75,4 @@ public class MotorVenta implements Vendible{
 	}
     
 }
+*/

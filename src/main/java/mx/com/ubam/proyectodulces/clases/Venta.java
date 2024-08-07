@@ -3,7 +3,7 @@ package mx.com.ubam.proyectodulces.clases;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 
 public class Venta {
@@ -107,12 +107,13 @@ public class Venta {
 
    
        
-    public void agregarDetalle(Producto prod, int cant) {
+   /* public void agregarDetalle(Producto prod, int cant) {
                 this.cant=cant;
 		int nDetalle = this.detalles.size() + 1;
 		DetalleVenta detVta = new DetalleVenta(nDetalle, cant, prod);
 		this.detalles.add(detVta);
 	}
+    
     public void mostrarVenta(){
         System.out.println("======================================");
         System.out.println("Num Venta: " + this.numVenta);
@@ -130,4 +131,5 @@ public class Venta {
 		}
 		//String canTotal =
     }
+*/
 }

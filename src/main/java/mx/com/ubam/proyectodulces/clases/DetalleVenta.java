@@ -7,8 +7,10 @@ package mx.com.ubam.proyectodulces.clases;
 public class DetalleVenta {
     private int numDetalleVenta;
     private int cantidad;
-    private Producto producto;
     private double importe;
+    private String dulce;
+    private String vendedor;
+    private String cliente;
 
     public int getNumDetalleVenta() {
         return numDetalleVenta;
@@ -26,14 +28,6 @@ public class DetalleVenta {
         this.cantidad = cantidad;
     }
 
-    public Producto getProducto() {
-        return producto;
-    }
-
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
     public double getImporte() {
         return importe;
     }
@@ -42,19 +36,47 @@ public class DetalleVenta {
         this.importe = importe;
     }
 
-   
+    public String getDulce() {
+        return dulce;
+    }
 
-    public DetalleVenta(int numDetalleVenta, int cantidad, Producto producto) {
+    public void setDulce(String dulce) {
+        this.dulce = dulce;
+    }
+
+    public String getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(String vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    public String getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(String cliente) {
+        this.cliente = cliente;
+    }
+
+    public DetalleVenta(int numDetalleVenta, int cantidad, double importe, String dulce, String vendedor, String cliente) {
         this.numDetalleVenta = numDetalleVenta;
         this.cantidad = cantidad;
-        this.producto = producto;
-        
+        this.importe = importe;
+        this.dulce = dulce;
+        this.vendedor = vendedor;
+        this.cliente = cliente;
     }
 
     @Override
     public String toString() {
-        return "DetalleVenta{" + "numDetalleVenta=" + numDetalleVenta + ", cantidad=" + cantidad + ", producto=" + producto +  '}';
+        return "DetalleVenta{" + "numDetalleVenta=" + numDetalleVenta + ", cantidad=" + cantidad + ", importe=" + importe + ", dulce=" + dulce + ", vendedor=" + vendedor + ", cliente=" + cliente + '}';
     }
+    
+    
+
+   
 }
   
             

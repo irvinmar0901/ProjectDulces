@@ -11,8 +11,10 @@ import javax.swing.table.DefaultTableModel;
 import mx.com.ubam.proyectodulces.catalogo.CatalogoCliente;
 import mx.com.ubam.proyectodulces.catalogo.CatalogoDulces;
 import mx.com.ubam.proyectodulces.catalogo.CatalogoVendedor;
+import mx.com.ubam.proyectodulces.catalogo.DetalleVentas;
 import mx.com.ubam.proyectodulces.catalogo.SesionVendedor;
 import mx.com.ubam.proyectodulces.clases.Cliente;
+import mx.com.ubam.proyectodulces.clases.DetalleVenta;
 import mx.com.ubam.proyectodulces.clases.Dulce;
 
 /**
@@ -24,6 +26,8 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
     CatalogoDulces cd = new CatalogoDulces();
     CatalogoVendedor cv = new CatalogoVendedor();
     SesionVendedor sv = new SesionVendedor();
+    DetalleVentas dv = new DetalleVentas();
+            int numVenta = 0;
     /**
      * Creates new form PaginaCrearTicket
      */
@@ -56,7 +60,7 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
         ComboBoxDulce = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        DetalleVenta = new javax.swing.JTable();
+        TableDetalleVentas = new javax.swing.JTable();
         LabelVendedor = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         FieldCantidad = new javax.swing.JTextField();
@@ -79,6 +83,12 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
 
         jLabel2.setText("Numero de Venta:");
 
+        FieldNumVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FieldNumVentaActionPerformed(evt);
+            }
+        });
+
         jButton1.setText("Actualizar Datos");
 
         jLabel3.setText("Cliente");
@@ -93,15 +103,24 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
 
         jLabel6.setText("Detalle de Venta");
 
-        DetalleVenta.setModel(new javax.swing.table.DefaultTableModel(
+        TableDetalleVentas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "Numero de Venta", "Cliente", "Vendedor", "Dulce", "Cantidad", "Total"
             }
-        ));
-        jScrollPane2.setViewportView(DetalleVenta);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TableDetalleVentas.setEnabled(false);
+        jScrollPane2.setViewportView(TableDetalleVentas);
 
         LabelVendedor.setText(".");
 
@@ -137,8 +156,7 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
                                     .addGap(18, 18, 18)
                                     .addComponent(jLabel7)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(FieldCantidad)
-                                    .addGap(18, 18, 18))
+                                    .addComponent(FieldCantidad))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel3)
                                     .addGap(18, 18, 18)
@@ -192,13 +210,36 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(FieldCantidad.getText().isEmpty() && FieldNumVenta.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para realizar la venta");
+        if(FieldNumVenta.getText().isEmpty()){
+            numVenta++;
+        }else{
+            numVenta = Integer.parseInt(FieldNumVenta.getText());
         }
+        if(FieldCantidad.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Debes rellenar todos los campos para realizar la venta");
+        }else{
+        int cantidad = Integer.parseInt(FieldCantidad.getText());
+        String Cliente = (String)ComboBoxCliente.getSelectedItem();
+        String Dulce = (String)ComboBoxDulce.getSelectedItem();
+        String Vendedor = SesionVendedor.getVendedor();
+        
+        DetalleVenta detalle = new DetalleVenta(numVenta, cantidad , ventas() , Dulce , Vendedor , Cliente );
+        DetalleVentas.agregarDetalleVenta(detalle);
         llenartabla();
         borrar();
+        
+        }
+        
+        
+        
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void FieldNumVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FieldNumVentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_FieldNumVentaActionPerformed
 
     public void cargarDatosDulce(){
         ComboBoxDulce.removeAllItems();
@@ -225,11 +266,7 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
         return cantidad * preciobase;
     }
     public void llenartabla(){
-        String numVenta = FieldNumVenta.getText();
-        String cantidad = FieldCantidad.getText();
-        String Cliente = (String)ComboBoxCliente.getSelectedItem();
-        String Dulce = (String)ComboBoxDulce.getSelectedItem();
-        String Vendedor = SesionVendedor.getVendedor();
+        
         
         DefaultTableModel tm = new DefaultTableModel();
         tm.addColumn("Numero de Venta");
@@ -240,11 +277,16 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
         tm.addColumn("Total");
         
         List<Object[]> rows = new ArrayList<>();
-            rows.add(new Object[] {numVenta , Cliente , Vendedor , Dulce , cantidad , ventas()});            
+            for( int i =0 ; i < DetalleVentas.getDetalleVenta().size() ; i++){
+                rows.add(new Object[] { DetalleVentas.detalleVenta.get(i).getNumDetalleVenta() , DetalleVentas.detalleVenta.get(i).getCliente() ,
+                                        DetalleVentas.detalleVenta.get(i).getVendedor() , DetalleVentas.detalleVenta.get(i).getDulce() ,
+                                        DetalleVentas.detalleVenta.get(i).getCantidad() , DetalleVentas.detalleVenta.get(i).getImporte() });  
+            }
+                      
                 for(Object[] row : rows){
                 tm.addRow(row);
                 }
-                DetalleVenta.setModel(tm);
+                TableDetalleVentas.setModel(tm);
     }
     public void borrar(){
         FieldCantidad.setText("");
@@ -256,10 +298,10 @@ public class PaginaCrearTicket extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboBoxCliente;
     private javax.swing.JComboBox<String> ComboBoxDulce;
-    private javax.swing.JTable DetalleVenta;
     private javax.swing.JTextField FieldCantidad;
     private javax.swing.JTextField FieldNumVenta;
     private javax.swing.JLabel LabelVendedor;
+    private javax.swing.JTable TableDetalleVentas;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
